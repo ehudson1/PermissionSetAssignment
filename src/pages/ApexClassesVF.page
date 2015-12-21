@@ -1,0 +1,52 @@
+<apex:page controller="ApexClassesController">
+<apex:sectionHeader title="This page displays all Apex Classes created by the specified user and to which Permission Sets they are assigned."/>
+
+    <script type="text/javascript">
+    function createSEA(PSN, APN) {
+        alert('Success!  The relationship between the Apex Class "'+APN+'" and the Permission Set "'+PSN+'" has been changed');
+                 Visualforce.remoting.Manager.invokeAction(
+                           '{!$RemoteAction.ApexClassesController.addApexClass}',
+                          PSN, APN,
+                         function(result, event){
+                            if(event.status){}
+                             window.location.reload();
+                           },
+                        {escape:true}
+             	);
+    }
+    </script>
+    
+    
+    
+    <apex:form >
+        <apex:pageBlock title="Display Apex Classes that were Last Modified by specified User">
+           <apex:pageBlockSection >
+      			<apex:selectList value="{!selectedUser}" size="1" label="Apex Classes Last Modified By: ">
+          			<apex:selectOptions value="{!UserList}">
+          			</apex:selectOptions>
+      			</apex:selectList>
+               <apex:commandButton value="Display Apex Classes" action="{!test}" rerender="out"/>
+			</apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+    
+    <apex:form >
+    <apex:pageBlock title="Click to Assign Apex Classes to Permission Sets">
+        <apex:outputPanel id="out">
+        	<apex:pageBlockSection >
+        		<apex:pageBlockTable value="{!BiggestMap}" var="bm" id="table">
+            		<apex:column >
+                		<apex:outputText value="{!bm.Name}"/>
+            		</apex:column>
+            		<apex:repeat value="{!PSs}" var="ps" id="PSName">
+                		<apex:column headerValue="{!ps.Name}">
+                    		<apex:inputCheckbox value="{!BiggestMap[bm][ps]}" onclick="createSEA('{!ps.Name}','{!bm.Name}')">
+                    		</apex:inputCheckbox><br/>
+                		</apex:column>
+            		</apex:repeat>
+            	</apex:pageBlockTable>
+        	</apex:pageBlockSection>
+    	</apex:outputPanel>
+  	</apex:pageBlock>
+</apex:form>
+</apex:page>

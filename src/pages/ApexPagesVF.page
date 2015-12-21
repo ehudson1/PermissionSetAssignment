@@ -1,0 +1,50 @@
+<apex:page controller="ApexPagesController">
+<apex:sectionHeader title="This page displays all Visualforce Pages created by the current user and to which Permission Sets they are assigned."/>
+<script type="text/javascript">
+    function createSEA(PSN, APN) {
+        alert('Success!  The relationship between the Apex Page "'+APN+'" and the Permission Set "'+PSN+'" has been changed');
+                 Visualforce.remoting.Manager.invokeAction(
+                           '{!$RemoteAction.ApexPagesController.dostuff}',
+                          PSN, APN,
+                         function(result, event){
+                            if(event.status){}
+                           window.location.reload();
+                         },
+                        {escape:true}
+                 );
+    }
+</script>
+    
+    <apex:form >
+        <apex:pageBlock title="Display Visualforce Pages that were Last Modified by specified User">
+           <apex:pageBlockSection >
+      			<apex:selectList value="{!selectedUser}" size="1" label="Visualforce Pages Last Modified By: ">
+          			<apex:selectOptions value="{!UserList}">
+          			</apex:selectOptions>
+      			</apex:selectList>
+               <apex:commandButton value="Display Visualforce Pages" action="{!test}" rerender="out"/>
+			</apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+    
+    <apex:form >
+    <apex:pageBlock title="Click to Assign Apex Pages to Permission Sets">
+        <apex:pageBlockSection >
+            <apex:outputPanel id="out">
+        		<apex:pageBlockTable value="{!BiggestMap}" var="bm" id="APName">
+            		<apex:column >
+                		<apex:outputText value="{!bm.Name}"/>
+            		</apex:column>
+            
+            		<apex:repeat value="{!PSs}" var="ps" id="PSName">
+                		<apex:column headerValue="{!ps.Name}">
+                    		<apex:inputCheckbox value="{!BiggestMap[bm][ps]}" onclick="createSEA('{!ps.Name}','{!bm.Name}')">
+                    		</apex:inputCheckbox><br/>
+                		</apex:column>
+            		</apex:repeat>
+            	</apex:pageBlockTable>
+            </apex:outputPanel>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+	</apex:form>
+</apex:page>
