@@ -336,6 +336,10 @@
         <name>ManageEmailClientConfig</name>
     </userPermissions>
     <userPermissions>
+        <enabled>false</enabled>
+        <name>ManageEncryptionKeys</name>
+    </userPermissions>
+    <userPermissions>
         <enabled>true</enabled>
         <name>ManageExchangeConfig</name>
     </userPermissions>
