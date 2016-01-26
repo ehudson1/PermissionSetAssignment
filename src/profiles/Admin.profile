@@ -85,11 +85,11 @@
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
-        <name>CanUseNewDashboardBuilder</name>
+        <name>CanInsertFeedSystemFields</name>
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
-        <name>ChatterOwnGroups</name>
+        <name>CanUseNewDashboardBuilder</name>
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
@@ -99,20 +99,21 @@
         <enabled>true</enabled>
         <name>ChatterEditOwnRecordPost</name>
     </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>ChatterFileLink</name>
     </userPermissions>
-        <userPermissions>
+    <userPermissions>
         <enabled>true</enabled>
         <name>ChatterInternalUser</name>
     </userPermissions>
-    </userPermissions>
-        <userPermissions>
+    <userPermissions>
         <enabled>true</enabled>
         <name>ChatterInviteExternalUsers</name>
     </userPermissions>
-    </userPermissions>
-        <userPermissions>
+    <userPermissions>
         <enabled>true</enabled>
-        <name>ChatterFileLink</name>
+        <name>ChatterOwnGroups</name>
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
