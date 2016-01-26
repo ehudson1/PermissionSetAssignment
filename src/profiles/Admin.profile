@@ -93,6 +93,29 @@
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
+        <name>ChatterEditOwnPost</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>ChatterEditOwnRecordPost</name>
+    </userPermissions>
+    </userPermissions>
+        <userPermissions>
+        <enabled>true</enabled>
+        <name>ChatterInternalUser</name>
+    </userPermissions>
+    </userPermissions>
+        <userPermissions>
+        <enabled>true</enabled>
+        <name>ChatterInviteExternalUsers</name>
+    </userPermissions>
+    </userPermissions>
+        <userPermissions>
+        <enabled>true</enabled>
+        <name>ChatterFileLink</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
         <name>ConnectOrgToEnvironmentHub</name>
     </userPermissions>
     <userPermissions>
