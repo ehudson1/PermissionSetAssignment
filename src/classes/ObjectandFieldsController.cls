@@ -2,19 +2,6 @@ public class ObjectandFieldsController {
     public PageReference pagerefresh(){
         return null;
     }
-    public List<PermissionSet> PSs
-    {
-        get
-        {
-            List<PermissionSet> PSs = new List<PermissionSet>();
-            ID CurrentUserID = UserInfo.getUserId();
-            List<PermissionSet> OldestPS = [SELECT Id,Name,CreatedDate FROM PermissionSet WHERE CreatedById=:CurrentUserId order by CreatedDate ASC LIMIT 1];
-            DateTime BeginningDate = OldestPS[0].CreatedDate;
-            PSs = [SELECT Id,Name,CreatedById,CreatedDate FROM PermissionSet WHERE CreatedDate>:BeginningDate order by CreatedDate DESC];
-            return PSs;
-        }
-        set;
-    }
     Schema.DescribeSObjectResult objDescribe;
     public String selectedObject{get;set;}
     public Map <String, Schema.SObjectType> schemaMap = Schema.getGlobalDescribe();
@@ -23,7 +10,7 @@ public class ObjectandFieldsController {
         get{
             List<SelectOption> listofpermsets = new List<SelectOption>();
             DateTime BeginningDate = [SELECT Id,Name,CreatedDate FROM PermissionSet order by CreatedDate ASC LIMIT 1][0].CreatedDate;
-            List<PermissionSet> PS = [SELECT Id,Name,CreatedDate FROM PermissionSet WHERE CreatedDate>:BeginningDate order by CreatedDate DESC];
+            List<PermissionSet> PS = [SELECT Id,Name,CreatedDate FROM PermissionSet WHERE CreatedDate!=:BeginningDate order by CreatedDate DESC];
             for (PermissionSet s:PS){
                 listofpermsets.add(new SelectOption(s.id, s.Name));
             }

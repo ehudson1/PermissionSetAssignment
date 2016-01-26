@@ -4,5 +4,5 @@
     <label>Permission Set Assignments</label>
     <tab>Apex_Class_Assignment</tab>
     <tab>VF_Page_Assignment</tab>
-    <tab>Object_and_Field_Assignment_SLDS</tab>
+    <tab>Object_and_Field_Assignment</tab>
 </CustomApplication>

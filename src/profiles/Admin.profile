@@ -39,10 +39,6 @@
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>Object_and_Field_Assignment_SLDS</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
         <tab>VF_Page_Assignment</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
