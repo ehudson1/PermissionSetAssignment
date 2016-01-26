@@ -9,7 +9,7 @@ public class ObjectandFieldsController {
     {
         get{
             List<SelectOption> listofpermsets = new List<SelectOption>();
-            DateTime BeginningDate = [SELECT Id,Name,CreatedDate FROM PermissionSet order by CreatedDate ASC][12].CreatedDate;
+            DateTime BeginningDate = [SELECT Id,Name,CreatedDate FROM PermissionSet order by CreatedDate ASC][25].CreatedDate;
             List<PermissionSet> PS = [SELECT Id,Name,CreatedDate FROM PermissionSet WHERE CreatedDate>:BeginningDate order by CreatedDate DESC];
             for (PermissionSet s:PS){
                 listofpermsets.add(new SelectOption(s.id, s.Name));
