@@ -9,7 +9,7 @@
     <types>
         <members>ApexClassesVF</members>
         <members>ApexPagesVF</members>
-        <members>ObjectsVF2</members>
+        <members>ObjectsVF2SLDS</members>
         <name>ApexPage</name>
     </types>
     <types>
@@ -18,7 +18,7 @@
     </types>
     <types>
         <members>Apex_Class_Assignment</members>
-        <members>Object_and_Field_Assignment</members>
+        <members>Object_and_Field_Assignment_SLDS</members>
         <members>VF_Page_Assignment</members>
         <name>CustomTab</name>
     </types>
@@ -27,7 +27,7 @@
         <name>Profile</name>
     </types>
     <types>
-        <members>SLDS</members>
+        <members>*</members>
         <name>StaticResource</name>
     </types>
     <version>35.0</version>

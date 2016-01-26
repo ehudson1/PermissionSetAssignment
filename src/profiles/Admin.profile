@@ -31,7 +31,7 @@
         <enabled>true</enabled>
     </pageAccesses>
     <pageAccesses>
-        <apexPage>ObjectsVF2</apexPage>
+        <apexPage>ObjectsVF2SLDS</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
     <tabVisibilities>
@@ -39,7 +39,7 @@
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>Object_and_Field_Assignment</tab>
+        <tab>Object_and_Field_Assignment_SLDS</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>

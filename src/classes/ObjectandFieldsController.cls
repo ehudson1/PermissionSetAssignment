@@ -209,11 +209,11 @@ public class ObjectandFieldsController {
             for(Schema.SObjectType ob:options)
             {
                 String nameofob = ob.getdescribe().getName();
-				Set<String> tempName = new Set<String>();
+                                Set<String> tempName = new Set<String>();
                 tempName.add(nameofob);
                 if(tempName.contains(selectedObjectName)){
                     List<ObjectPermissions> existingOP = new List<ObjectPermissions>();
-                	existingOP =[SELECT Id,ParentId,PermissionsCreate,PermissionsDelete,PermissionsEdit,PermissionsModifyAllRecords,PermissionsRead,PermissionsViewAllRecords,SobjectType FROM ObjectPermissions WHERE SObjectType=:nameofob AND ParentId=:selectedPSet];
+                        existingOP =[SELECT Id,ParentId,PermissionsCreate,PermissionsDelete,PermissionsEdit,PermissionsModifyAllRecords,PermissionsRead,PermissionsViewAllRecords,SobjectType FROM ObjectPermissions WHERE SObjectType=:nameofob AND ParentId=:selectedPSet];
                     if (existingOP.isEmpty()){
                         ObjectPermissions newOP = new ObjectPermissions();
                         newOP.ParentId = selectedPSet;
@@ -228,7 +228,7 @@ public class ObjectandFieldsController {
                             delete opp;
                         }
                         response1 = 'Success!  The ability for the Object '+selectedObjectName+' to be read has been removed from the Permission Set '+ppp.Name;
-            		}
+                        }
                 }
             }
             return response1;
@@ -260,11 +260,11 @@ public class ObjectandFieldsController {
             for(Schema.SObjectType ob:options)
             {
                 String nameofob = ob.getdescribe().getName();
-				Set<String> tempName = new Set<String>();
+                                Set<String> tempName = new Set<String>();
                 tempName.add(nameofob);
                 if(tempName.contains(selectedObjectName)){
                     List<ObjectPermissions> existingOP = new List<ObjectPermissions>();
-                	existingOP =[SELECT Id,ParentId,PermissionsCreate,PermissionsDelete,PermissionsEdit,PermissionsModifyAllRecords,PermissionsRead,PermissionsViewAllRecords,SobjectType FROM ObjectPermissions WHERE SObjectType=:nameofob AND ParentId=:selectedPSet];
+                        existingOP =[SELECT Id,ParentId,PermissionsCreate,PermissionsDelete,PermissionsEdit,PermissionsModifyAllRecords,PermissionsRead,PermissionsViewAllRecords,SobjectType FROM ObjectPermissions WHERE SObjectType=:nameofob AND ParentId=:selectedPSet];
                     if (existingOP.isEmpty()){
                         ObjectPermissions newOP = new ObjectPermissions();
                         newOP.ParentId = selectedPSet;
@@ -281,22 +281,22 @@ public class ObjectandFieldsController {
                               update op;
                               response1= 'The ability for the Object '+selectedObjectName+' to be edited has been added to the Permission Set '+ppp.Name;
                             }
-                        	else if(op.PermissionsEdit == true){
+                                else if(op.PermissionsEdit == true){
                               op.PermissionsEdit = false;
                               op.PermissionsCreate = false;
                               op.PermissionsDelete = false;
                               update op;    
                              response1 = 'The ability for the Object '+selectedObjectName+' to be edited has been removed from the Permission Set '+ppp.Name;
-                			}
+                                        }
                         }
-            		}
+                        }
                 }
             }
         String s= 'Success! ';
         return s+response1;
     }
     catch(DmlException e){
-    	String response2 = 'The save failed because you are trying to assign or remove a permission from a child object that requires a different permission on the parent object.  Please change the parent object permission first, then try again.';
+        String response2 = 'The save failed because you are trying to assign or remove a permission from a child object that requires a different permission on the parent object.  Please change the parent object permission first, then try again.';
         return response2;
     }
     catch(Exception e){
@@ -319,14 +319,14 @@ public class ObjectandFieldsController {
             }
             ID CurrentUserID = UserInfo.getUserId();
             DateTime BeginningDate = [SELECT Id,Name,CreatedDate FROM PermissionSet order by CreatedDate ASC LIMIT 1][0].CreatedDate;
-        	for(Schema.SObjectType ob:options)
+                for(Schema.SObjectType ob:options)
             {
                 String nameofob = ob.getdescribe().getName();
-				Set<String> tempName = new Set<String>();
+                                Set<String> tempName = new Set<String>();
                 tempName.add(nameofob);
                 if(tempName.contains(selectedObjectName)){
                     List<ObjectPermissions> existingOP = new List<ObjectPermissions>();
-                	existingOP =[SELECT Id,ParentId,PermissionsCreate,PermissionsDelete,PermissionsEdit,PermissionsModifyAllRecords,PermissionsRead,PermissionsViewAllRecords,SobjectType FROM ObjectPermissions WHERE SObjectType=:nameofob AND ParentId=:selectedPSet];
+                        existingOP =[SELECT Id,ParentId,PermissionsCreate,PermissionsDelete,PermissionsEdit,PermissionsModifyAllRecords,PermissionsRead,PermissionsViewAllRecords,SobjectType FROM ObjectPermissions WHERE SObjectType=:nameofob AND ParentId=:selectedPSet];
                     if (existingOP.isEmpty()){
                         ObjectPermissions newOP = new ObjectPermissions();
                         newOP.ParentId = selectedPSet;
@@ -347,9 +347,9 @@ public class ObjectandFieldsController {
                               op.PermissionsCreate = false;
                               update op;     
                              response1= 'The ability for the Object '+selectedObjectName+' to be created has been removed from the Permission Set '+ppp.Name;
-                		}
+                                }
                     }
-            	}
+                }
             }
         }
         String s= 'Success! ';
@@ -382,11 +382,11 @@ public class ObjectandFieldsController {
             for(Schema.SObjectType ob:options)
             {
                 String nameofob = ob.getdescribe().getName();
-				Set<String> tempName = new Set<String>();
+                                Set<String> tempName = new Set<String>();
                 tempName.add(nameofob);
                 if(tempName.contains(selectedObjectName)){
                     List<ObjectPermissions> existingOP = new List<ObjectPermissions>();
-                	existingOP =[SELECT Id,ParentId,PermissionsCreate,PermissionsDelete,PermissionsEdit,PermissionsModifyAllRecords,PermissionsRead,PermissionsViewAllRecords,SobjectType FROM ObjectPermissions WHERE SObjectType=:nameofob AND ParentId=:selectedPSet];
+                        existingOP =[SELECT Id,ParentId,PermissionsCreate,PermissionsDelete,PermissionsEdit,PermissionsModifyAllRecords,PermissionsRead,PermissionsViewAllRecords,SobjectType FROM ObjectPermissions WHERE SObjectType=:nameofob AND ParentId=:selectedPSet];
                     if (existingOP.isEmpty()){
                         ObjectPermissions newOP = new ObjectPermissions();
                         newOP.ParentId = selectedPSet;
@@ -409,9 +409,9 @@ public class ObjectandFieldsController {
                               op.PermissionsDelete = false;
                               update op;     
                              response1= 'The ability for the Object '+selectedObjectName+' to be deleted has been removed from the Permission Set '+ppp.Name;
-                		}
+                                }
                     }
-            	}
+                }
             }
         }
         String s= 'Success! ';
@@ -449,22 +449,22 @@ public class ObjectandFieldsController {
                 System.debug('****In field list, the selected object is: '+selectedObject+' and name of ob is: '+nameofob);
                 if (nameofob.equalsIgnoreCase(selectedObject)){
                     System.debug('****This worked.... matches name of object');
-                	Map<String,Schema.SObjectField> mfields = ob.getDescribe().fields.getMap();
-                	List<Schema.SObjectField> objectFields = mfields.values();
+                        Map<String,Schema.SObjectField> mfields = ob.getDescribe().fields.getMap();
+                        List<Schema.SObjectField> objectFields = mfields.values();
                     System.debug('*****The fields to iterate through are: '+objectFields);
-                	for(Schema.SObjectField o:objectFields)
-                	{
-                    	String fieldString = String.valueOf(o);
+                        for(Schema.SObjectField o:objectFields)
+                        {
+                        String fieldString = String.valueOf(o);
                         String actual = nameofob+'.'+fieldString;
                         System.debug('*****The field is: '+fieldString+' and object.field is: '+actual);
-                    	if(mfields.get(fieldString).getDescribe().iscustom()) {
-                        	if(mfields.get(fieldString).getDescribe().isUpdateable()) { 
-                            	System.debug('****custom and updateable object!');
-                            	FieldName.add(fieldString);
-                            	System.debug('****The final list of field names that should display is: '+FieldName);
-                    		
-        			}
-    			}
+                        if(mfields.get(fieldString).getDescribe().iscustom()) {
+                                if(mfields.get(fieldString).getDescribe().isUpdateable()) { 
+                                System.debug('****custom and updateable object!');
+                                FieldName.add(fieldString);
+                                System.debug('****The final list of field names that should display is: '+FieldName);
+                                
+                                }
+                        }
            
                 }
                 }
@@ -499,27 +499,27 @@ public class ObjectandFieldsController {
                     String fieldString = String.valueOf(o);
                     if(mfields.get(fieldString).getDescribe().iscustom()) {
                         if(mfields.get(fieldString).getDescribe().isUpdateable()) {  
-                    		Map<PermissionSet, Boolean> InMap = new Map<PermissionSet, Boolean>();
-                    		List<FieldPermissions> tempPSs = new List<FieldPermissions>();
-                   			String actualName = nameofob+'.'+fieldString;
-                    		tempPSs = [SELECT ParentId FROM FieldPermissions WHERE Field=:actualname AND PermissionsRead=true];
+                                Map<PermissionSet, Boolean> InMap = new Map<PermissionSet, Boolean>();
+                                List<FieldPermissions> tempPSs = new List<FieldPermissions>();
+                                        String actualName = nameofob+'.'+fieldString;
+                                tempPSs = [SELECT ParentId FROM FieldPermissions WHERE Field=:actualname AND PermissionsRead=true];
                             Set<Id> tempSet = new Set<Id>();
                             boolean response = false;
-                    		for(FieldPermissions s: tempPSs)
-                    		{	
-                        		tempSet.add(s.ParentId);
-                    		}
-                    		for (PermissionSet psss:Perms)
-                    		{
-                        		response = (tempSet.contains(psss.Id));
-                    		}
-                    		MapOfReadPermissionsField.put(fieldString, response);
-                		}
-           			}
+                                for(FieldPermissions s: tempPSs)
+                                {       
+                                        tempSet.add(s.ParentId);
+                                }
+                                for (PermissionSet psss:Perms)
+                                {
+                                        response = (tempSet.contains(psss.Id));
+                                }
+                                MapOfReadPermissionsField.put(fieldString, response);
+                                }
+                                }
                 }
                 }
             }
-    	return MapofReadPermissionsField;
+        return MapofReadPermissionsField;
     }
          set;
     }
@@ -548,26 +548,26 @@ public class ObjectandFieldsController {
                     String fieldString = String.valueOf(o);
                     if(mfields.get(fieldString).getDescribe().iscustom()) {
                         if(mfields.get(fieldString).getDescribe().isUpdateable()) {
-                    		List<FieldPermissions> tempPSs = new List<FieldPermissions>();
-                   			String actualName = nameofob+'.'+fieldString;
-                    		tempPSs = [SELECT ParentId FROM FieldPermissions WHERE Field=:actualname AND PermissionsRead=true AND PermissionsEdit=true];
+                                List<FieldPermissions> tempPSs = new List<FieldPermissions>();
+                                        String actualName = nameofob+'.'+fieldString;
+                                tempPSs = [SELECT ParentId FROM FieldPermissions WHERE Field=:actualname AND PermissionsRead=true AND PermissionsEdit=true];
                             Set<Id> tempSet = new Set<Id>();
                             boolean response = false;
-                    		for(FieldPermissions s: tempPSs)
-                    		{	
-                        		tempSet.add(s.ParentId);
-                    		}
-                    		for (PermissionSet psss:Perms)
-                    		{
-                        		response = (tempSet.contains(psss.Id));
-                    		}
-                    		MapOfEditPermissionsField.put(fieldString, response);
-                		}
+                                for(FieldPermissions s: tempPSs)
+                                {       
+                                        tempSet.add(s.ParentId);
+                                }
+                                for (PermissionSet psss:Perms)
+                                {
+                                        response = (tempSet.contains(psss.Id));
+                                }
+                                MapOfEditPermissionsField.put(fieldString, response);
+                                }
                     }
                 }
                 }
             }
-    	return MapofEditPermissionsField;
+        return MapofEditPermissionsField;
     }
          set;
     }
@@ -579,7 +579,7 @@ public class ObjectandFieldsController {
             String response1 = '';
         List<PermissionSet> currentPermSet = new List<PermissionSet>();
         PermissionSet ppp = [SELECT Id, Name FROM PermissionSet WHERE Id =: selectedPSet LIMIT 1][0];
-		List<Schema.SObjectType> options=new List<Schema.SObjectType>();
+                List<Schema.SObjectType> options=new List<Schema.SObjectType>();
             for(Schema.SObjectType objTyp : Schema.getGlobalDescribe().Values())
             {
                 if(objTyp.getDescribe().isCustom()){
@@ -593,35 +593,35 @@ public class ObjectandFieldsController {
                 List<Schema.SObjectField> objectFields = new List<Schema.SObjectField>();
                 objectFields = mfields.values();
                 for(Schema.SObjectField o:objectFields)
-                		{
+                                {
                             String returnValue = String.valueOf(o);
-                    		String actualName = nameofob+'.'+returnvalue;
+                                String actualName = nameofob+'.'+returnvalue;
                             if(mfields.get(returnValue).getDescribe().iscustom()) {
                                 if(mfields.get(returnValue).getDescribe().isUpdateable()) {
                                     System.debug('~~~This is the custom field: '+o);
-                    			Set<String> tempName = new Set<String>();
-                    			tempName.add(returnvalue);
-                    			if(tempName.contains(selectedFieldName)){
+                                        Set<String> tempName = new Set<String>();
+                                        tempName.add(returnvalue);
+                                        if(tempName.contains(selectedFieldName)){
                                     System.debug('~~~The field is the right one: '+returnvalue);
-                        			List<FieldPermissions> existingFP = [SELECT Id,ParentId FROM FieldPermissions WHERE ParentId=:selectedPSet AND Field=:actualName];
-        							if (existingFP.isEmpty()){
-                    					System.debug('~~~There was no field permission existing before');
-                                        FieldPermissions newFP = new FieldPermissions();					
-										newFP.ParentId = ppp.id;
-                    					newFP.Field = actualName;
-                        				newFP.SObjectType = nameofob;
-                        				newFP.PermissionsRead = true;
-                        				insert newFP;
+                                                List<FieldPermissions> existingFP = [SELECT Id,ParentId FROM FieldPermissions WHERE ParentId=:selectedPSet AND Field=:actualName];
+                                                                if (existingFP.isEmpty()){
+                                                        System.debug('~~~There was no field permission existing before');
+                                        FieldPermissions newFP = new FieldPermissions();                                        
+                                                                                newFP.ParentId = ppp.id;
+                                                        newFP.Field = actualName;
+                                                        newFP.SObjectType = nameofob;
+                                                        newFP.PermissionsRead = true;
+                                                        insert newFP;
                                         System.debug('~~~The field permission has been inserted: '+newFP);
                                         response1 = 'The Field '+selectedFieldName+' has been successfully added to the Permission Set '+ppp.Name+' with the read permission';
                                     }
-                        			else{
-                        				System.debug('~~~The field permission did not exist');
+                                                else{
+                                                        System.debug('~~~The field permission did not exist');
                                         for(FieldPermissions f1:existingFP){
-                            				delete f1;
+                                                        delete f1;
                                             System.debug('~~~The field permission has been deleted: '+f1);
                                             response1 = 'The Field '+selectedFieldName+' has been successfully added to the Permission Set '+ppp.Name+' with the read permission';
-                            		}}
+                                        }}
                     }
                     else{
                         System.debug('*the actual name does not equal the selected field name');
@@ -647,7 +647,7 @@ public class ObjectandFieldsController {
             String response1 = '';
         List<PermissionSet> currentPermSet = new List<PermissionSet>();
         PermissionSet ppp = [SELECT Id, Name FROM PermissionSet WHERE Id =: selectedPSet LIMIT 1][0];
-		List<Schema.SObjectType> options=new List<Schema.SObjectType>();
+                List<Schema.SObjectType> options=new List<Schema.SObjectType>();
             for(Schema.SObjectType objTyp : Schema.getGlobalDescribe().Values())
             {
                 if(objTyp.getDescribe().isCustom()){
@@ -662,16 +662,16 @@ public class ObjectandFieldsController {
                 List<Schema.SObjectField> objectFields = new List<Schema.SObjectField>();
                 objectFields = mfields.values();
                 for(Schema.SObjectField o:objectFields)
-                		{
+                                {
                             String returnValue = String.valueOf(o);
-                    		String actualName = nameofob+'.'+returnvalue;
+                                String actualName = nameofob+'.'+returnvalue;
                             if(mfields.get(returnValue).getDescribe().iscustom()){
                                 if(mfields.get(returnValue).getDescribe().isUpdateable()) {
                                     System.debug('***********Does it make it here?');
-                    			Set<String> tempName = new Set<String>();
-                    			tempName.add(returnvalue);
-                    			if(tempName.contains(selectedFieldName)){
-                        			System.debug('*****This is the field we want to change: '+selectedFieldName);
+                                        Set<String> tempName = new Set<String>();
+                                        tempName.add(returnvalue);
+                                        if(tempName.contains(selectedFieldName)){
+                                                System.debug('*****This is the field we want to change: '+selectedFieldName);
                                     List<FieldPermissions> existingFP = [SELECT Id,ParentId,PermissionsEdit,PermissionsRead FROM FieldPermissions WHERE ParentId=:selectedPSet AND Field=:actualName];
                                     System.debug('***The existing fieldspmermissions is: '+existingFP);
                                     if(existingFP.isEmpty()){
@@ -681,31 +681,31 @@ public class ObjectandFieldsController {
                                             newfp.Field = actualName;
                                             newfp.PermissionsRead = true;
                                             newfp.PermissionsEdit=true;
-                                        	System.debug('****There was nothing there so I am inserting: '+newfp);
-                                        	insert newfp;
-                                        	response1 = 'The field '+selectedFieldName+' has been added to the Permission Set '+ppp.Name+' with the edit permission';
+                                                System.debug('****There was nothing there so I am inserting: '+newfp);
+                                                insert newfp;
+                                                response1 = 'The field '+selectedFieldName+' has been added to the Permission Set '+ppp.Name+' with the edit permission';
                                     }
                                     else{
                                         for (FieldPermissions fp: existingFP){
                                             if(fp.PermissionsEdit==false){
-                                            	fp.PermissionsEdit = true;
-                                            	System.debug('***There used to be read only, adding edit: '+fp);
-                                            	update fp;
+                                                fp.PermissionsEdit = true;
+                                                System.debug('***There used to be read only, adding edit: '+fp);
+                                                update fp;
                                                 response1 = 'The editing ability of the field '+selectedFieldName+' has been added to the Permission Set '+ppp.Name;
-                                        	}
-                                        	else if(fp.PermissionsEdit == true){
-                                            	fp.PermissionsEdit = false;
-                                            	System.debug('***This exists and I dont want it anymore: '+fp);
-                                            	update fp;
+                                                }
+                                                else if(fp.PermissionsEdit == true){
+                                                fp.PermissionsEdit = false;
+                                                System.debug('***This exists and I dont want it anymore: '+fp);
+                                                update fp;
                                                 response1 = 'The ability for the field '+selectedFieldName+' to be edited has been removed from the Permission Set '+ppp.Name;
-                                        	}
-                                    	}
-                                	}
+                                                }
+                                        }
+                                        }
                                 }
-                      			}
+                                        }
                             }
                         }
-           		}
+                        }
             return response1;
     }
         catch(DmlException e){
