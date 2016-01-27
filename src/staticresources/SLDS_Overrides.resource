@@ -497,3 +497,26 @@ html > body.slds ul.ui-autocomplete .ui-menu-item a{padding-left:5px;display:blo
 html > body.slds ul.ui-autocomplete .ui-menu-item a.ui-state-focus,
 html > body.slds ul.ui-autocomplete .ui-menu-item a.ui-state-active{background:#F3F5F8;border:0;border-radius:0;margin:0;}
 html > body.slds ul.ui-autocomplete .ui-menu-item img + a{padding-left:36px;}
+
+html > body.slds input[type=checkbox] {
+	-webkit-appearance: none;
+	border: 1px #D8DDE6 solid;
+	width: 16px;
+	height: 16px;
+	border-radius: 3px;
+	background-color: #fff;
+}
+
+html > body.slds input[type=checkbox]:checked:after {
+	display: block;
+	content: '';
+	height: 0.25rem;
+	width: 0.5rem;
+	position: relative;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate3d(-50%, -50%, 0) rotate(-45deg);
+	transform: translate3d(-50%, -50%, 0) rotate(-45deg);
+	border-bottom: 2px solid #1589ee;
+	border-left: 2px solid #1589ee;
+}

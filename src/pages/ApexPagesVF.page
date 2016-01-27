@@ -21,7 +21,7 @@
         <div class="slds-form-element__control">
         <apex:pageBlock title="Display Visualforce Pages that were Last Modified by specified User">
            <apex:pageBlockSection >
-      			<apex:selectList styleClass="slds-select" value="{!selectedUser}" size="1" label="Visualforce Pages Last Modified By: ">
+      			<apex:selectList styleClass="slds-input" value="{!selectedUser}" size="1" label="Visualforce Pages Last Modified By: ">
           			<apex:selectOptions value="{!UserList}">
           			</apex:selectOptions>
       			</apex:selectList>
