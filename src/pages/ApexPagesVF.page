@@ -1,30 +1,34 @@
-<apex:page controller="ApexPagesController">
-<apex:sectionHeader title="This page displays all Visualforce Pages created by the current user and to which Permission Sets they are assigned."/>
+<apex:page controller="ApexPagesController" applyBodyTag="false">
+<apex:stylesheet value="{!URLFOR($Resource.SLDS_assets, 'assets/styles/salesforce-lightning-design-system-vf.css')}" />
+<apex:stylesheet value="{!$Resource.SLDS_Overrides}"/>
+    <apex:sectionHeader title="This page displays all Visualforce Pages created by the current user and to which Permission Sets they are assigned."/>
 <script type="text/javascript">
     function createSEA(PSN, APN) {
-        alert('Success!  The relationship between the Apex Page "'+APN+'" and the Permission Set "'+PSN+'" has been changed');
+        //alert('Success!  The relationship between the Apex Page "'+APN+'" and the Permission Set "'+PSN+'" has been changed');
                  Visualforce.remoting.Manager.invokeAction(
                            '{!$RemoteAction.ApexPagesController.dostuff}',
                           PSN, APN,
                          function(result, event){
                             if(event.status){}
-                           window.location.reload();
+                             //window.location.reload();
                          },
                         {escape:true}
                  );
     }
 </script>
-    
+    <body class="slds">
     <apex:form >
+        <div class="slds-form-element__control">
         <apex:pageBlock title="Display Visualforce Pages that were Last Modified by specified User">
            <apex:pageBlockSection >
-      			<apex:selectList value="{!selectedUser}" size="1" label="Visualforce Pages Last Modified By: ">
+      			<apex:selectList styleClass="slds-select" value="{!selectedUser}" size="1" label="Visualforce Pages Last Modified By: ">
           			<apex:selectOptions value="{!UserList}">
           			</apex:selectOptions>
       			</apex:selectList>
                <apex:commandButton value="Display Visualforce Pages" action="{!test}" rerender="out"/>
 			</apex:pageBlockSection>
         </apex:pageBlock>
+        </div>
     </apex:form>
     
     <apex:form >
@@ -43,8 +47,12 @@
                 		</apex:column>
             		</apex:repeat>
             	</apex:pageBlockTable>
+                <apex:pageBlockSection >
+                <apex:commandButton value="Rerender Page" action="{!pagerefresh}"/>
+            </apex:pageBlockSection>
             </apex:outputPanel>
         </apex:pageBlockSection>
     </apex:pageBlock>
 	</apex:form>
+    </body>
 </apex:page>

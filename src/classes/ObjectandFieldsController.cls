@@ -9,7 +9,7 @@ public class ObjectandFieldsController {
     {
         get{
             List<SelectOption> listofpermsets = new List<SelectOption>();
-            DateTime BeginningDate = [SELECT Id,Name,CreatedDate FROM PermissionSet order by CreatedDate ASC][42].CreatedDate;
+            DateTime BeginningDate = [SELECT Id,Name,CreatedDate FROM PermissionSet order by CreatedDate ASC][24].CreatedDate;
             List<PermissionSet> PS = [SELECT Id,Name,CreatedDate FROM PermissionSet WHERE CreatedDate>:BeginningDate order by CreatedDate DESC];
             for (PermissionSet s:PS){
                 listofpermsets.add(new SelectOption(s.id, s.Name));
@@ -562,7 +562,6 @@ public class ObjectandFieldsController {
      @RemoteAction
     public static String changeReadPermField(String selectedPSet, String selectedFieldName){
         try{
-            System.debug('~~~I am entering the changereadpermissionmethod');
             String response1 = '';
         List<PermissionSet> currentPermSet = new List<PermissionSet>();
         PermissionSet ppp = [SELECT Id, Name FROM PermissionSet WHERE Id =: selectedPSet LIMIT 1][0];
@@ -585,22 +584,18 @@ public class ObjectandFieldsController {
                                 String actualName = nameofob+'.'+returnvalue;
                             if(mfields.get(returnValue).getDescribe().iscustom()) {
                                 if(mfields.get(returnValue).getDescribe().isUpdateable()) {
-                                    System.debug('~~~This is the custom field: '+o);
                                         Set<String> tempName = new Set<String>();
                                         tempName.add(returnvalue);
                                         if(tempName.contains(selectedFieldName)){
-                                    System.debug('~~~The field is the right one: '+returnvalue);
-                                                List<FieldPermissions> existingFP = [SELECT Id,ParentId FROM FieldPermissions WHERE ParentId=:selectedPSet AND Field=:actualName];
-                                                                if (existingFP.isEmpty()){
-                                                        System.debug('~~~There was no field permission existing before');
-                                        FieldPermissions newFP = new FieldPermissions();                                        
-                                                                                newFP.ParentId = ppp.id;
-                                                        newFP.Field = actualName;
-                                                        newFP.SObjectType = nameofob;
-                                                        newFP.PermissionsRead = true;
-                                                        insert newFP;
-                                        System.debug('~~~The field permission has been inserted: '+newFP);
-                                        response1 = 'The Field '+selectedFieldName+' has been successfully added to the Permission Set '+ppp.Name+' with the read permission';
+                                        	List<FieldPermissions> existingFP = [SELECT Id,ParentId FROM FieldPermissions WHERE ParentId=:selectedPSet AND Field=:actualName];
+                                            	if (existingFP.isEmpty()){
+                                        			FieldPermissions newFP = new FieldPermissions();                                        
+                                                    newFP.ParentId = ppp.id;
+                                                    newFP.Field = actualName;
+                                                    newFP.SObjectType = nameofob;
+                                                    newFP.PermissionsRead = true;
+                                                    insert newFP;
+                                        			response1 = 'The Field '+selectedFieldName+' has been successfully added to the Permission Set '+ppp.Name+' with the read permission';
                                     }
                                                 else{
                                                         System.debug('~~~The field permission did not exist');

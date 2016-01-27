@@ -1,15 +1,17 @@
-<apex:page controller="ApexClassesController">
-<apex:sectionHeader title="This page displays all Apex Classes created by the specified user and to which Permission Sets they are assigned."/>
+<apex:page controller="ApexClassesController" applyBodyTag="false">
+<apex:stylesheet value="{!URLFOR($Resource.SLDS_assets, 'assets/styles/salesforce-lightning-design-system-vf.css')}" />
+<apex:stylesheet value="{!$Resource.SLDS_Overrides}"/>
+    <apex:sectionHeader title="This page displays all Apex Classes created by the specified user and to which Permission Sets they are assigned."/>
 
     <script type="text/javascript">
     function createSEA(PSN, APN) {
-        alert('Success!  The relationship between the Apex Class "'+APN+'" and the Permission Set "'+PSN+'" has been changed');
+        //alert('Success!  The relationship between the Apex Class "'+APN+'" and the Permission Set "'+PSN+'" has been changed');
                  Visualforce.remoting.Manager.invokeAction(
                            '{!$RemoteAction.ApexClassesController.addApexClass}',
                           PSN, APN,
                          function(result, event){
                             if(event.status){}
-                             window.location.reload();
+                             //window.location.reload();
                            },
                         {escape:true}
              	);
@@ -17,17 +19,19 @@
     </script>
     
     
-    
+    <body class="slds">
     <apex:form >
+        <div class="slds-form-element__control">
         <apex:pageBlock title="Display Apex Classes that were Last Modified by specified User">
            <apex:pageBlockSection >
-      			<apex:selectList value="{!selectedUser}" size="1" label="Apex Classes Last Modified By: ">
+      			<apex:selectList styleClass="slds-select" value="{!selectedUser}" size="1" label="Apex Classes Last Modified By: ">
           			<apex:selectOptions value="{!UserList}">
           			</apex:selectOptions>
       			</apex:selectList>
                <apex:commandButton value="Display Apex Classes" action="{!test}" rerender="out"/>
 			</apex:pageBlockSection>
         </apex:pageBlock>
+        </div>
     </apex:form>
     
     <apex:form >
@@ -45,8 +49,13 @@
                 		</apex:column>
             		</apex:repeat>
             	</apex:pageBlockTable>
+            
         	</apex:pageBlockSection>
+            <apex:pageBlockSection >
+                <apex:commandButton value="Refresh Page" action="{!pagerefresh}"/>
+            </apex:pageBlockSection>
     	</apex:outputPanel>
   	</apex:pageBlock>
 </apex:form>
+    </body>
 </apex:page>

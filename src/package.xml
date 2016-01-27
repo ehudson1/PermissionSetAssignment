@@ -18,6 +18,7 @@
     </types>
     <types>
         <members>Apex_Class_Assignment</members>
+        <members>Object_and_Field_Assignment</members>
         <members>Object_and_Field_Assignment_SLDS</members>
         <members>VF_Page_Assignment</members>
         <name>CustomTab</name>

@@ -1,4 +1,7 @@
 public with sharing class ApexClassesController {
+    public PageReference pagerefresh(){
+        return null;
+    }
     public string selectedUser {get; set;}
     public PageReference test(){
         return null;

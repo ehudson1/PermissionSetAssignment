@@ -116,7 +116,7 @@
                 </apex:selectList>
             </apex:pageBlockSection>
             <apex:pageBlockSection >
-                <apex:commandButton value="Display Object Assignments for Perm Set" action="{!pagerefresh}" rerender="out"/>
+                <apex:commandButton value="Display Custom Object Assignments for Perm Set" action="{!pagerefresh}" rerender="out"/>
             </apex:pageBlockSection>
         </apex:pageBlock>
     </apex:form>
@@ -126,7 +126,7 @@
             <div class="inlineEditWrite">
             <apex:outputPanel id="out" >
         
-            <apex:pageBlock title="2. Check and uncheck boxes to assign objects to or remove objects from Permission Set">
+            <apex:pageBlock title="2. Check and uncheck boxes to adjust Permission Set assignments of custom objects">
             <apex:pageBlockTable value="{!ListOfObjects}" var="ob" id="ObjectName">
             
                 <apex:column >
@@ -138,23 +138,21 @@
                 <apex:inputCheckbox value="{!MapofReadPermissionsOb[ob]}" onclick="createPSNReadOb('{!chosenPermSetNames}','{!ob}')"/><br/>
             </apex:column>
             <apex:column headerValue="Permission to Edit">
-                <apex:inputCheckbox value="{!MapofEditPermissionsOb[ob]}" onclick="createPSNEditOb('{!chosenPermSetNames}','{!ob}')" styleClass="checkImg" /><br/>
+                <apex:inputCheckbox value="{!MapofEditPermissionsOb[ob]}" onclick="createPSNEditOb('{!chosenPermSetNames}','{!ob}')" /><br/>
             </apex:column>
             <apex:column headerValue="Permission to Create">
                 <apex:inputCheckbox value="{!MapofCreatePermissionsOb[ob]}" onclick="createPSNCreateOb('{!chosenPermSetNames}','{!ob}')"/><br/>
             </apex:column>
             <apex:column headerValue="Permission to Delete">
-                <apex:inputCheckbox styleClass="checkImg" value="{!MapofDeletePermissionsOb[ob]}" onclick="createPSNDeleteOb('{!chosenPermSetNames}','{!ob}')"/><br/>
+                <apex:inputCheckbox value="{!MapofDeletePermissionsOb[ob]}" onclick="createPSNDeleteOb('{!chosenPermSetNames}','{!ob}')"/><br/>
             </apex:column>
-            <apex:column headerValue="3. Drill down into fields">
+            <apex:column headerValue="Drill down into fields">
                 <apex:commandLink styleClass="slds-link" action="{!pagerefresh}" value="View Fields for {!ob}" reRender="out2">
                     <apex:param name="selectedobject" assignTo="{!selectedobject}" value="{!ob}"/>
                 </apex:commandLink>
             </apex:column>
             </apex:pageBlockTable>
-            <apex:pageBlockSection >
-                <apex:commandButton value="Refresh Page" action="{!pagerefresh}"/>
-            </apex:pageBlockSection>
+            
             
         </apex:pageBlock>
        </apex:outputPanel>
@@ -164,7 +162,7 @@
     <div class="slds-form-element__control">
     <apex:form >
         <apex:outputPanel id="out2">
-        <apex:pageBlock title="4. Check and uncheck boxes to assign fields to or remove fields from Permission Set" > 
+        <apex:pageBlock title="3. Click blue links in far right column of table to adjust field assignments for each object" > 
                 <apex:pageBlockTable value="{!FieldName}" var="fn" id="FieldName">
             <apex:column >
                 <apex:outputText value="{!fn}"/>
@@ -176,8 +174,12 @@
                 <apex:inputcheckbox value="{!MapofEditPermissionsField[fn]}" onclick="createPSNEditField('{!chosenPermSetNames}','{!fn}')"/>
             </apex:column>
             </apex:pageBlockTable>
+            <apex:pageBlockSection >
+                <apex:commandButton value="Refresh Page" action="{!pagerefresh}"/>
+            </apex:pageBlockSection>
         </apex:pageBlock>
         </apex:outputPanel>
+        
         </apex:form>
         </div>
     </body>
