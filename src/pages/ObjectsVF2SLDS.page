@@ -111,12 +111,12 @@
     <apex:form >
         <apex:pageBlock title="1. Choose a Permission Set">
            <apex:pageBlockSection >
-                <apex:selectList value="{!chosenPermSetNames}" id="PSet" label="Choose the Permission Set: ">
+                <apex:selectList value="{!chosenPermSetNames}" id="PSet" label="">
                     <apex:selectOptions value="{!listofpermsets}"/>
                 </apex:selectList>
             </apex:pageBlockSection>
             <apex:pageBlockSection >
-                <apex:commandButton value="Display Custom Object Assignments for Perm Set" action="{!pagerefresh}" rerender="out"/>
+                <apex:commandButton value="Display Custom Object Assignments" action="{!pagerefresh}" rerender="out"/>
             </apex:pageBlockSection>
         </apex:pageBlock>
     </apex:form>
