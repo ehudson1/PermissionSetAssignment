@@ -40,5 +40,8 @@ The only errors that may occur are:
 >- if you try to remove the permissions of a parent object when the child object has them enabled
 - if you try to add permissions of a child object when the parent child does not have them enabled
 
-View screen shots of the tool below:
+<p>
+View screen shots of the tool below.
+<p>
+
 <img src="https://cloud.githubusercontent.com/assets/8573319/12995076/941495d0-d0d9-11e5-9d8f-710b857a2acf.png" width="90%"></img> <img src="https://cloud.githubusercontent.com/assets/8573319/12995052/60114256-d0d9-11e5-9ecd-44b9a2d5c261.png" width="90%"></img> <img src="https://cloud.githubusercontent.com/assets/8573319/12995139/0365c224-d0da-11e5-98c1-aeb6334bffe8.png" width="90%"></img> 
