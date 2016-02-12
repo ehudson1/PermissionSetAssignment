@@ -34,6 +34,8 @@ For the Custom Object and Custom Field Assignments:
 <p>
 5. Click the "Refresh Page" button at the bottom of the page to make sure the changes were made.  The page loads displaying current assignments in the org.
 
+=======================================================
+
 The only errors that may occur are:
 >- if you try to remove the permissions of a parent object when the child object has them enabled
 - if you try to add permissions of a child object when the parent child does not have them enabled
